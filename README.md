@@ -1,9 +1,15 @@
+# Hosted admin update
+
+See [VERCEL-DEPLOYMENT.md](VERCEL-DEPLOYMENT.md) for the current Vercel setup.
+The hosted editor uses username/password authentication and GitHub-backed saves.
+The Sveltia instructions below describe the optional legacy CMS, not the default editor.
+
 # Arte Industries — Website (v1)
 
 One-page marketing and enquiry site for **arteind.com**.
 Stack: React 19 · TypeScript · Vite · Tailwind CSS v4 · Lucide icons · self-hosted Manrope font.
 Optional serverless enquiry endpoint: `api/enquiry.ts` (Vercel Function → email via Resend).
-Admin panel: **Sveltia CMS** at `/admin` — edits the JSON files in `content/` and uploads images via GitHub; Vercel rebuilds the site on every save. Staff instructions: **ADMIN-GUIDE.md**.
+Admin panel: **Sveltia CMS** at `/studio-7c9e4a2f6b18d035` — edits the JSON files in `content/` and uploads images via GitHub; Vercel rebuilds the site on every save. Staff instructions: **ADMIN-GUIDE.md**.
 
 ---
 
@@ -23,7 +29,7 @@ npm run preview                # serves /dist at http://localhost:4173
 
 ```
 arte-website/
-├─ content/                    ← ALL editable website content (edited through /admin)
+├─ content/                    ← ALL editable website content (edited through /studio-7c9e4a2f6b18d035)
 │  ├─ settings.json            Company details, contact info, SEO title/description, workshop photo
 │  ├─ products/*.json          One file per product
 │  └─ sections/*.json          Text for hero, about, products, services, industries, why, contact
@@ -47,17 +53,17 @@ arte-website/
 
 ## 3. Editing content
 
-**Normally: use the admin panel** at `https://www.arteind.com/admin`. See **ADMIN-GUIDE.md** for setup (GitHub accounts + access tokens) and day-to-day use. Each Save commits to GitHub; Vercel rebuilds and publishes in ~1–2 minutes.
+**Normally: use the admin panel** at `https://www.arteind.com/studio-7c9e4a2f6b18d035`. See **ADMIN-GUIDE.md** for setup (GitHub accounts + access tokens) and day-to-day use. Each Save commits to GitHub; Vercel rebuilds and publishes in ~1–2 minutes.
 
 How it works:
-- The admin panel is Sveltia CMS v0.235.1, self-hosted at `public/admin/sveltia-cms-0.235.1.js` (pinned on purpose; upgrade deliberately).
+- The admin panel is Sveltia CMS v0.235.1, self-hosted at `public/studio-7c9e4a2f6b18d035/sveltia-cms-0.235.1.js` (pinned on purpose; upgrade deliberately).
 - It has no database or server. It reads and writes the JSON files in `content/` and stores uploads in `public/images/uploads/` via the GitHub API, using the admin's own GitHub permissions.
 - Uploaded photos are converted to WebP and capped at 1600 px automatically.
 - Every change is a Git commit, so any edit can be undone from GitHub's history.
-- **Before first use**, set `backend.repo` in `public/admin/config.yml` to `<github-owner>/arte-website`.
+- **Before first use**, set `backend.repo` in `public/studio-7c9e4a2f6b18d035/config.yml` to `<github-owner>/arte-website`.
 
-Adding a new editable field: add it to `public/admin/config.yml`, then read it in `src/content.ts` and use it in a component.
-Enquiry dropdown options are fixed in three places that must match: `src/content.ts`, `public/admin/config.yml` (`&enquiryOptions`) and `api/enquiry.ts`.
+Adding a new editable field: add it to `public/studio-7c9e4a2f6b18d035/config.yml`, then read it in `src/content.ts` and use it in a component.
+Enquiry dropdown options are fixed in three places that must match: `src/content.ts`, `public/studio-7c9e4a2f6b18d035/config.yml` (`&enquiryOptions`) and `api/enquiry.ts`.
 
 Optional upgrade: a "Sign in with GitHub" button instead of access tokens needs a GitHub OAuth app plus the free Sveltia CMS Authenticator on Cloudflare Workers (https://github.com/sveltia/sveltia-cms-auth). Then set `backend.base_url` in config.yml.
 
@@ -96,7 +102,7 @@ Any static host works for the site itself (Netlify, Cloudflare Pages, shared hos
 | Item | Where | Status |
 |---|---|---|
 | Mobile `+91 99690 07666`, landline `022-2494 4333`, email `tanmay@arteind.com`, Lower Parel address | Admin → Company details (and legal pages) | From brochure — **confirm still current** |
-| GitHub repo name in admin config | `public/admin/config.yml` → `backend.repo` | **Must be set** before /admin works |
+| GitHub repo name in admin config | `public/studio-7c9e4a2f6b18d035/config.yml` → `backend.repo` | **Must be set** before /studio-7c9e4a2f6b18d035 works |
 | Public email address | Admin → Company details | Consider `sales@` / `info@` instead of a personal inbox |
 | WhatsApp number | Admin → Company details | Empty (hidden) — brochure doesn't say which number is on WhatsApp |
 | LinkedIn URL | Admin → Company details | Empty (hidden) |
@@ -142,3 +148,5 @@ Still to do manually:
 4. Cloudflare Turnstile + rate limiting on the form.
 5. Google Business Profile for the Lower Parel address, linked from the site.
 6. Export/international page once that business line is active.
+
+

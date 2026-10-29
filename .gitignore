@@ -5,3 +5,4 @@ dist
 .vercel
 .netlify
 /.local-admin-trash/
+*.log

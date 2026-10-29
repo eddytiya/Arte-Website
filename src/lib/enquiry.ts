@@ -2,10 +2,10 @@ import { enquiryOptions } from '../content'
 
 export const UPLOAD_RULES = {
   maxFiles: 3,
-  maxTotalBytes: 10 * 1024 * 1024,
+  maxTotalBytes: 3 * 1024 * 1024,
   extensions: ['pdf', 'jpg', 'jpeg', 'png', 'webp'],
   accept: '.pdf,.jpg,.jpeg,.png,.webp,application/pdf,image/jpeg,image/png,image/webp',
-  label: 'PDF, JPG, PNG or WebP · up to 3 files · 10 MB total',
+  label: 'PDF, JPG, PNG or WebP · up to 3 files · 3 MB total',
 } as const
 
 export interface EnquiryValues {
@@ -78,7 +78,7 @@ export function validateFiles(files: File[]): string | undefined {
     if (f.size === 0) return `"${f.name}" is empty.`
     total += f.size
   }
-  if (total > UPLOAD_RULES.maxTotalBytes) return 'Attachments exceed 10 MB in total. Please compress or remove a file.'
+  if (total > UPLOAD_RULES.maxTotalBytes) return 'Attachments exceed 3 MB in total. Please compress or remove a file.'
   return undefined
 }
 
@@ -150,3 +150,4 @@ export function mailtoFallback(to: string, v: EnquiryValues) {
   ].filter((l): l is string => l !== null)
   return `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`
 }
+

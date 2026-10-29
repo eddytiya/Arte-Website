@@ -47,15 +47,18 @@ export default defineConfig({
     name: 'admin-directory-index',
     configureServer(server) {
       server.middlewares.use((req, _res, next) => {
-        if (req.url === '/admin' || req.url === '/admin/') req.url = '/admin/index.html'
+        if (req.url === '/admin' || req.url?.startsWith('/admin/')) { _res.statusCode = 404; _res.end('Not found'); return }
+        if (req.url === '/studio-7c9e4a2f6b18d035' || req.url === '/studio-7c9e4a2f6b18d035/') req.url = '/studio-7c9e4a2f6b18d035/index.html'
         next()
       })
     },
     configurePreviewServer(server) {
       server.middlewares.use((req, _res, next) => {
-        if (req.url === '/admin' || req.url === '/admin/') req.url = '/admin/index.html'
+        if (req.url === '/admin' || req.url?.startsWith('/admin/')) { _res.statusCode = 404; _res.end('Not found'); return }
+        if (req.url === '/studio-7c9e4a2f6b18d035' || req.url === '/studio-7c9e4a2f6b18d035/') req.url = '/studio-7c9e4a2f6b18d035/index.html'
         next()
       })
     },
   }],
 })
+

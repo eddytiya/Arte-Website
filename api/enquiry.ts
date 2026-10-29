@@ -30,7 +30,7 @@ const OPTIONS = [
   'Other / Not Sure',
 ]
 const MAX_FILES = 3
-const MAX_TOTAL = 10 * 1024 * 1024
+const MAX_TOTAL = 3 * 1024 * 1024
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
 
 const json = (status: number, body: unknown) =>
@@ -61,7 +61,7 @@ export async function POST(request: Request): Promise<Response> {
   }
 
   const len = Number(request.headers.get('content-length') ?? 0)
-  if (len > MAX_TOTAL + 200_000) return json(413, { error: 'Attachments exceed 10 MB in total.' })
+  if (len > MAX_TOTAL + 200_000) return json(413, { error: 'Attachments exceed 3 MB in total.' })
 
   let fd: FormData
   try {
@@ -106,7 +106,7 @@ export async function POST(request: Request): Promise<Response> {
   const files = fd.getAll('files').filter((f): f is File => f instanceof File && f.size > 0)
   if (files.length > MAX_FILES) return json(422, { error: `Attach up to ${MAX_FILES} files.` })
   const total = files.reduce((n, f) => n + f.size, 0)
-  if (total > MAX_TOTAL) return json(413, { error: 'Attachments exceed 10 MB in total.' })
+  if (total > MAX_TOTAL) return json(413, { error: 'Attachments exceed 3 MB in total.' })
 
   const attachments: { filename: string; content: string }[] = []
   for (const f of files) {
@@ -158,3 +158,4 @@ export async function POST(request: Request): Promise<Response> {
   }
   return json(200, { ok: true })
 }
+

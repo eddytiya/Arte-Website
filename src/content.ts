@@ -1,5 +1,5 @@
 /**
- * Loads all editable content from /content (managed through the admin panel at /admin).
+ * Loads all editable content from /content (managed through the admin panel at /studio-7c9e4a2f6b18d035).
  * Every value has a safe fallback so a half-filled entry can never blank the page.
  */
 import settingsRaw from '../content/settings.json'
@@ -18,7 +18,7 @@ const strs = (v: unknown): string[] => arr(v).map((x) => str(x)).filter(Boolean)
 type Obj = Record<string, unknown>
 const obj = (v: unknown): Obj => (v && typeof v === 'object' ? (v as Obj) : {})
 
-/** Dropdown options in the enquiry form. Must match the list in public/admin/config.yml. */
+/** Dropdown options in the enquiry form. Must match the list in public/studio-7c9e4a2f6b18d035/config.yml. */
 export const enquiryOptions = [
   'Worm Reduction Gearbox',
   'Worm Wheel',
@@ -219,3 +219,4 @@ export const contactSection = {
     'Thank you. Our team will review your requirement and get back to you.',
   ),
 }
+

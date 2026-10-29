@@ -1,7 +1,13 @@
+# Current hosted admin
+
+Open /studio-7c9e4a2f6b18d035/ and sign in with the configured admin credentials.
+See VERCEL-DEPLOYMENT.md for hosting and environment setup. Hosted saves commit to GitHub
+and publish after Vercel deploys. The older GitHub-token CMS instructions below are optional.
+
 # Arte Industries — Admin Panel Guide
 
 **Website:** https://www.arteind.com
-**Admin panel:** https://www.arteind.com/admin (bookmark this — it is not linked from the website)
+**Admin panel:** https://www.arteind.com/studio-7c9e4a2f6b18d035 (bookmark this — it is not linked from the website)
 
 Anything you change in the admin panel goes live on the website about **1–2 minutes after you click Save**.
 
@@ -10,7 +16,7 @@ Anything you change in the admin panel goes live on the website about **1–2 mi
 ## Part A — One-time setup (done once, by whoever manages the website)
 
 ### A1. Point the admin panel at your GitHub repository
-Open `public/admin/config.yml` and replace `YOUR-GITHUB-USERNAME` with the GitHub account that owns the `arte-website` repository. Example:
+Open `public/studio-7c9e4a2f6b18d035/config.yml` and replace `YOUR-GITHUB-USERNAME` with the GitHub account that owns the `arte-website` repository. Example:
 ```yaml
 repo: riteshdesai/arte-website
 ```
@@ -37,7 +43,7 @@ Treat this key like a password. Don't send it on WhatsApp or email. If it leaks,
 
 ### Local development
 
-At `http://127.0.0.1:5173/admin/`, sign in with username `admin` and password `admin`.
+At `http://127.0.0.1:5173/studio-7c9e4a2f6b18d035/`, sign in with username `admin` and password `admin`.
 This login is available only through the local Vite development server on this computer.
 Choose **Add product** or select an existing product, enter details and upload a photo,
 then **Save product**. Changes are saved directly in `content/products` and
@@ -52,7 +58,7 @@ in `.local-admin-trash` for recovery and excluded from Git. Shared images are re
 
 ### Published website
 
-1. Go to **arteind.com/admin**.
+1. Go to **arteind.com/studio-7c9e4a2f6b18d035**.
 2. Click **Sign In Using Access Token**.
 3. Paste your token → **Sign In**.
 
@@ -119,4 +125,6 @@ Use a **real** photo of the Arte workshop. Never use a stock or AI-generated "fa
 
 ## Where do quote requests go?
 Not into the admin panel. Enquiries from the "Request a Quote" form are **emailed** to the company inbox, with any drawings or photos attached, once the email connection is set up (see README section 4).
+
+
 

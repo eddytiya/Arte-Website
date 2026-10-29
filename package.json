@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -p tsconfig.json && tsc -p tsconfig.api.json && vite build",
     "preview": "vite preview",
-    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.api.json"
+    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.api.json",
+    "test:hosted-admin": "node --experimental-strip-types --test tests/hosted-admin.test.mjs"
   },
   "dependencies": {
     "@fontsource-variable/manrope": "^5.3.0",

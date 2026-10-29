@@ -1,0 +1,23 @@
+3:10:08 pm [vite] (client) [Unhandled error] ReferenceError: fullRange is not defined
+ > Products src/components/Products.tsx:189:13
+    187 |            </p>
+    188 |            <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+    189 |              {fullRange.map((p) => (
+        |               ^
+    190 |                <li
+    191 |                  key={p.id}
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:28571:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:8030:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10569:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:12205:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:1045:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:19176:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:19004:40
+ > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:18985:10
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:18094:34
+
+3:10:08 pm [vite] (client) [console.warn] An error occurred in the <Products> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+

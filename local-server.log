@@ -1,0 +1,24 @@
+
+  VITE v8.3.5  ready in 598 ms
+
+  ➜  Local:   http://127.0.0.1:5174/
+  ➜  press h + enter to show help
+12:32:13 pm [vite] (client) page reload public/admin/cms.html
+12:32:36 pm [vite] (client) page reload public/admin/index.html
+12:33:12 pm [vite] vite.config.ts changed, restarting server...
+12:33:12 pm [vite] (client) Re-optimizing dependencies because vite config has changed
+12:33:12 pm [vite] server restarted.
+12:33:14 pm [vite] (client) [optimizer] bundling dependencies...
+12:36:44 pm [vite] vite.config.ts changed, restarting server...
+12:36:44 pm [vite] (client) Re-optimizing dependencies because vite config has changed
+12:36:44 pm [vite] server restarted.
+12:36:46 pm [vite] (client) [optimizer] bundling dependencies...
+12:37:26 pm [vite] (client) page reload public/admin/local.html
+12:38:27 pm [vite] vite.config.ts changed, restarting server...
+12:38:28 pm [vite] server restarted.
+3:07:38 pm [vite] local-admin.ts changed, restarting server...
+3:07:39 pm [vite] server restarted.
+3:08:03 pm [vite] (client) page reload public/admin/local.html
+3:11:53 pm [vite] local-admin.ts changed, restarting server...
+3:11:53 pm [vite] server restarted.
+3:11:56 pm [vite] (client) page reload public/admin/local.html

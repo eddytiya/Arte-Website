@@ -1,0 +1,335 @@
+# Arte Industries — admin panel configuration (Sveltia CMS)
+# Docs: https://sveltiacms.app/en/docs
+#
+# BEFORE FIRST USE: replace YOUR-GITHUB-USERNAME below with the GitHub account
+# or organisation that owns the repository (e.g. arte-industries/arte-website).
+
+backend:
+  name: github
+  repo: YOUR-GITHUB-USERNAME/arte-website
+  branch: main
+  commit_messages:
+    create: 'Admin: add {{collection}} “{{slug}}”'
+    update: 'Admin: update {{collection}} “{{slug}}”'
+    delete: 'Admin: delete {{collection}} “{{slug}}”'
+    uploadMedia: 'Admin: upload “{{path}}”'
+    deleteMedia: 'Admin: delete “{{path}}”'
+
+app_title: Arte Industries — Admin
+logo:
+  src: /favicon.svg
+site_url: https://www.arteind.com
+display_url: https://www.arteind.com
+
+# Uploaded images are stored in the website repository and published with the site.
+media_folder: public/images/uploads
+public_folder: /images/uploads
+media_libraries:
+  default:
+    config:
+      max_file_size: 10000000 # 10 MB
+      slugify_filename: true
+      transformations:
+        # Phone photos are resized and converted to WebP automatically so the site stays fast.
+        raster_image:
+          format: webp
+          quality: 85
+          width: 1600
+          height: 1600
+
+collections:
+  # ------------------------------------------------------------------ PRODUCTS
+  - name: products
+    label: Products
+    label_singular: Product
+    icon: settings
+    description: >-
+      Choose New to add a product using the website's existing card design. Add a name,
+      photo and short description, then choose where it appears and Save.
+      “Show in homepage grid” controls the main cards; “Show in full range list”
+      controls the list under “View All Products”.
+    folder: content/products
+    format: json
+    extension: json
+    create: true
+    delete: true
+    duplicate: true
+    identifier_field: title
+    slug: '{{title}}'
+    summary: '{{title}}'
+    thumbnail: image
+    sortable_fields:
+      fields: [order, title]
+      default: { field: order, direction: ascending }
+    view_filters:
+      - label: Homepage grid
+        field: featured
+        pattern: true
+      - label: Manufactured by Arte
+        field: supply
+        pattern: manufactured
+    fields:
+      - { name: title, label: Product name, widget: string }
+      - name: order
+        label: Display order
+        widget: number
+        value_type: int
+        default: 100
+        hint: Lower numbers appear first (10, 20, 30…).
+      - name: featured
+        label: Show in homepage grid
+        widget: boolean
+        default: false
+        hint: Uses the existing product card design. Six cards fit per desktop row; additional products wrap to the next row.
+      - name: fullRange
+        label: Show in full range list
+        widget: boolean
+        default: true
+      - name: image
+        label: Product photo
+        widget: image
+        hint: A clean photo on a white or transparent background works best. Large photos are resized automatically.
+      - name: alt
+        label: Photo description (for Google & screen readers)
+        widget: string
+        required: false
+        hint: e.g. “Bronze worm wheel with machined hub”. Leave empty to use the product name.
+      - name: supply
+        label: How is it supplied?
+        widget: select
+        default: made-or-sourced
+        options:
+          - { label: Manufactured by Arte, value: manufactured }
+          - { label: Manufactured or sourced (depends on requirement), value: made-or-sourced }
+          - { label: Sourced / supplied through partners, value: sourced }
+        hint: Be accurate — don't mark a product as manufactured if it is bought in.
+      - name: enquiry
+        label: Enquiry form category
+        widget: select
+        default: Other Gear Component
+        hint: Which option is pre-selected in the quote form when someone clicks “Enquire”.
+        options: &enquiryOptions
+          - Worm Reduction Gearbox
+          - Worm Wheel
+          - Worm Shaft
+          - Helical / Bevel / Spur Gear
+          - Other Gear Component
+          - Replacement Component
+          - Gear Hobbing
+          - Gearbox Repair
+          - Industrial Product Sourcing
+          - Other / Not Sure
+      - name: summary
+        label: Short description
+        widget: text
+        required: true
+        hint: 1–3 sentences shown when a visitor opens the product. Don't publish confidential dimensions or prices.
+      - name: includes
+        label: Includes (bullet points)
+        widget: list
+        required: false
+        field: { name: item, label: Item, widget: string }
+
+  # ------------------------------------------------------------ PAGE TEXT
+  - name: pages
+    label: Website text & details
+    label_singular: Page section
+    icon: article
+    files:
+      - name: settings
+        label: Company details & contact
+        file: content/settings.json
+        icon: contact_phone
+        fields:
+          - { name: companyName, label: Company name, widget: string }
+          - name: mobile
+            label: Mobile number
+            widget: string
+            required: false
+            hint: e.g. +91 99690 07666 — leave empty to hide.
+          - { name: landline, label: Landline number, widget: string, required: false }
+          - name: whatsapp
+            label: WhatsApp number
+            widget: string
+            required: false
+            hint: With country code, digits only, e.g. 919969007666. Leave empty to hide all WhatsApp buttons.
+          - { name: email, label: Email address, widget: string, required: false }
+          - name: addressLines
+            label: Address (one line per row)
+            widget: list
+            required: false
+            field: { name: line, label: Line, widget: string }
+          - { name: mapsUrl, label: Google Maps link, widget: string, required: false }
+          - name: linkedin
+            label: LinkedIn page link
+            widget: string
+            required: false
+            hint: Full link, e.g. https://www.linkedin.com/company/… — leave empty to hide.
+          - name: workshopPhoto
+            label: Workshop / factory photo (About section)
+            widget: image
+            required: false
+            hint: Use a REAL photo of the Arte workshop. Leave empty to show product images instead.
+          - name: shortDescription
+            label: Short company description (footer)
+            widget: text
+          - name: seoTitle
+            label: Google search title
+            widget: string
+            hint: Shown as the blue link in Google results. Keep under ~60 characters.
+          - name: seoDescription
+            label: Google search description
+            widget: text
+            hint: Shown under the link in Google results. Keep under ~160 characters.
+
+      - name: hero
+        label: Top banner (hero)
+        file: content/sections/hero.json
+        icon: web_asset
+        fields:
+          - name: eyebrow
+            label: Small orange line above heading
+            widget: string
+            hint: Separate words with | to get the divider lines.
+          - { name: headingLine1, label: Heading — white line, widget: string }
+          - { name: headingLine2, label: Heading — blue line, widget: string }
+          - { name: text, label: Paragraph under heading, widget: text }
+          - { name: primaryButton, label: Orange button text, widget: string }
+          - { name: secondaryButton, label: Second button text, widget: string }
+          - { name: imageLeft, label: 'Banner image (left, smaller)', widget: image, required: false }
+          - name: imageRight
+            label: Banner image (right, larger)
+            widget: image
+            required: false
+            hint: Product cut-outs on a transparent background look best on the dark banner.
+          - name: principles
+            label: 4 points in the light strip under the banner
+            widget: list
+            min: 4
+            max: 4
+            field: { name: point, label: Point, widget: string }
+
+      - name: about
+        label: About section
+        file: content/sections/about.json
+        icon: info
+        fields:
+          - { name: label, label: Small orange label, widget: string }
+          - { name: heading, label: Heading, widget: string }
+          - { name: body, label: Paragraph, widget: text }
+          - name: highlights
+            label: 3 highlights
+            widget: list
+            min: 3
+            max: 3
+            field: { name: item, label: Highlight, widget: string }
+
+      - name: productsSection
+        label: Products section text
+        file: content/sections/products.json
+        icon: inventory_2
+        fields:
+          - { name: label, label: Small orange label, widget: string }
+          - { name: heading, label: Heading, widget: string }
+          - { name: intro, label: Intro line, widget: text }
+          - { name: fullRangeHeading, label: '“View all” list heading', widget: string }
+          - { name: fullRangeNote, label: '“View all” list note', widget: text }
+          - { name: detailNote, label: Note shown in every product pop-up, widget: text }
+
+      - name: services
+        label: Services section
+        file: content/sections/services.json
+        icon: build
+        fields:
+          - { name: label, label: Small orange label, widget: string }
+          - { name: heading, label: Heading, widget: string }
+          - { name: intro, label: Intro paragraph, widget: text }
+          - name: items
+            label: Service cards
+            label_singular: Service
+            widget: list
+            summary: '{{fields.title}}'
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: body, label: Description, widget: text }
+              - { name: image, label: Image, widget: image, required: false }
+              - name: enquiry
+                label: Enquiry form category
+                widget: select
+                options: *enquiryOptions
+
+      - name: industries
+        label: Industries section
+        file: content/sections/industries.json
+        icon: factory
+        fields:
+          - { name: label, label: Small orange label, widget: string }
+          - { name: heading, label: Heading, widget: string }
+          - { name: intro, label: Intro line, widget: text }
+          - name: items
+            label: Industry cards
+            label_singular: Industry
+            widget: list
+            summary: '{{fields.title}}'
+            hint: Up to 6 cards fit in one row.
+            fields:
+              - { name: title, label: Industry name, widget: string }
+              - name: icon
+                label: Line drawing (used when there is no photo)
+                widget: select
+                default: gears
+                options:
+                  - { label: Rolling mill, value: rolling-mill }
+                  - { label: Conveyor, value: conveyor }
+                  - { label: Crusher, value: crusher }
+                  - { label: Cement plant, value: cement }
+                  - { label: Gears (general), value: gears }
+              - name: photo
+                label: Photo (optional)
+                widget: image
+                required: false
+                hint: Only use photos you own. Don't imply a customer relationship that isn't real.
+
+      - name: why
+        label: Why Arte section
+        file: content/sections/why.json
+        icon: verified
+        fields:
+          - { name: label, label: Small orange label, widget: string }
+          - { name: heading, label: Heading, widget: string }
+          - name: items
+            label: Cards
+            label_singular: Card
+            widget: list
+            summary: '{{fields.title}}'
+            hint: The layout fits 4 cards best. Keep claims factual — no certifications you don't hold.
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: body, label: Text, widget: text }
+              - name: icon
+                label: Icon
+                widget: select
+                default: settings
+                options:
+                  - { label: Diamond (quality), value: gem }
+                  - { label: People, value: users }
+                  - { label: Settings, value: settings }
+                  - { label: Chart, value: chart }
+                  - { label: Shield, value: shield }
+                  - { label: Wrench, value: wrench }
+                  - { label: Factory, value: factory }
+                  - { label: Handshake, value: handshake }
+                  - { label: Truck (delivery), value: truck }
+                  - { label: Globe (export), value: globe }
+
+      - name: contact
+        label: Contact & quote form text
+        file: content/sections/contact.json
+        icon: mail
+        fields:
+          - { name: label, label: Small orange label, widget: string }
+          - { name: heading, label: Heading, widget: string }
+          - { name: text, label: Paragraph, widget: text }
+          - { name: formHeading, label: Form heading, widget: string }
+          - { name: formText, label: Form intro line, widget: string }
+          - { name: successMessage, label: Message after a successful enquiry, widget: text }

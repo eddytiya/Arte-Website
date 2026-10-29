@@ -1,0 +1,32 @@
+{
+  "label": "Industries & Applications",
+  "heading": "Delivering Solutions Across Key Industries",
+  "intro": "Our gears, worm wheels and gearboxes are used in machinery across these applications.",
+  "items": [
+    {
+      "title": "Rolling Mills",
+      "icon": "rolling-mill",
+      "photo": ""
+    },
+    {
+      "title": "Conveyor Systems",
+      "icon": "conveyor",
+      "photo": ""
+    },
+    {
+      "title": "Sugarcane Crushers",
+      "icon": "crusher",
+      "photo": ""
+    },
+    {
+      "title": "Cement Industry",
+      "icon": "cement",
+      "photo": ""
+    },
+    {
+      "title": "Other Industrial Applications",
+      "icon": "gears",
+      "photo": ""
+    }
+  ]
+}

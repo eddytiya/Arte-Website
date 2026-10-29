@@ -1,0 +1,16 @@
+{
+  "title": "Bevel Gears & Spiral Bevel Gears",
+  "order": 50,
+  "featured": true,
+  "fullRange": false,
+  "image": "/images/products/spiral-bevel-gears.webp",
+  "alt": "Pair of spiral bevel gears",
+  "supply": "manufactured",
+  "enquiry": "Helical / Bevel / Spur Gear",
+  "summary": "Straight bevel gears, spiral bevel gears and spiral bevel gear-and-pinion sets.",
+  "includes": [
+    "Bevel gears",
+    "Spiral bevel gears",
+    "Spiral bevel gear and pinion"
+  ]
+}

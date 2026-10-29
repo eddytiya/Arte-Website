@@ -1,0 +1,110 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Manrope Variable', 'Manrope', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --color-navy-950: #051a33;
+  --color-navy-900: #08264a;
+  --color-navy-800: #10365f;
+  --color-navy-700: #1a4675;
+  --color-accent: #078be5;
+  --color-accent-soft: #3ba7f0;
+  --color-cta: #ff7428;
+  --color-cta-dark: #e85f15;
+  --color-mist: #f3f6fa;
+  --color-line: #dfe6ef;
+  --color-ink: #25364a;
+  --color-muted: #637386;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 76px;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility container-x {
+  @apply mx-auto w-full max-w-[1240px] px-5 sm:px-8;
+}
+@utility eyebrow {
+  @apply flex items-center gap-3 text-[11px] font-bold tracking-[0.16em] text-cta uppercase;
+  &::before {
+    content: '';
+    @apply block h-px w-8 bg-cta;
+  }
+}
+@utility h2 {
+  @apply text-[28px] leading-[1.15] font-extrabold tracking-[-0.01em] text-navy-900 sm:text-[34px];
+}
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold whitespace-nowrap transition-colors duration-200;
+}
+@utility btn-cta {
+  @apply btn bg-cta text-navy-900 shadow-[0_8px_24px_-10px_rgba(255,116,40,0.8)] hover:bg-cta-dark;
+}
+@utility btn-ghost-light {
+  @apply btn border border-white/40 text-white hover:border-white hover:bg-white/10;
+}
+@utility btn-outline {
+  @apply btn border border-navy-900/25 text-navy-900 hover:border-navy-900 hover:bg-navy-900 hover:text-white;
+}
+@utility field {
+  @apply block w-full rounded-md border border-line bg-white px-3.5 py-2.5 text-[15px] text-ink placeholder:text-muted/70 transition-colors focus:border-accent focus:ring-2 focus:ring-accent/20 focus:outline-none;
+  &[aria-invalid='true'] {
+    @apply border-red-500 focus:ring-red-500/20;
+  }
+}
+@utility label {
+  @apply mb-1.5 block text-[13px] font-semibold text-ink;
+}
+
+.blueprint-grid {
+  background-image:
+    linear-gradient(rgba(120, 170, 230, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 170, 230, 0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.product-dialog[open] { animation: product-open 200ms ease-out; }
+@keyframes product-open { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+::selection { background: #ff7428; color: #08264a; }
+.nav-indicator {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 1px;
+  height: 3px;
+  background: var(--color-cta);
+  transform-origin: left center;
+  pointer-events: none;
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1), opacity 150ms;
+}
+.nav-link:hover, .nav-link:focus-visible { background: rgb(255 255 255 / 8%); }
+.nav-link[aria-current='location'] { color: white; }
+.mobile-nav-link { transition: color 180ms, background-color 180ms; }
+.mobile-nav-link svg { opacity: 0; transform: translateX(-6px); transition: opacity 180ms, transform 220ms cubic-bezier(0.16, 1, 0.3, 1); }
+.mobile-nav-link[aria-current='location'] { color: var(--color-cta); background: rgb(255 255 255 / 5%); }
+.mobile-nav-link[aria-current='location'] svg, .mobile-nav-link:hover svg, .mobile-nav-link:focus-visible svg { opacity: 1; transform: translateX(0); }

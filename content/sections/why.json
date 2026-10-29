@@ -1,0 +1,26 @@
+{
+  "label": "Why Choose Arte Industries",
+  "heading": "A Partner for Long-Term Growth",
+  "items": [
+    {
+      "title": "Quality Focus",
+      "body": "An emphasis on suitable components and clear requirements.",
+      "icon": "gem"
+    },
+    {
+      "title": "Customer-Centric Approach",
+      "body": "Understanding your specific product and application needs.",
+      "icon": "users"
+    },
+    {
+      "title": "Flexible Manufacturing & Sourcing",
+      "body": "Discussing suitable manufacturing or supply options based on your requirements.",
+      "icon": "settings"
+    },
+    {
+      "title": "Support for Diverse Industries",
+      "body": "Gear and industrial component enquiries across a range of applications.",
+      "icon": "chart"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+file watcher error: EBUSY: resource busy or locked, watch 'C:\Users\biswajit.das\Desktop\Arte-Website\4-Website-Code\public\admin\cms.html'
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - import "./local-admin" without a file extension (vite.config.ts:5:28). Add the file extension
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+file watcher error: EBUSY: resource busy or locked, watch 'C:\Users\biswajit.das\Desktop\Arte-Website\4-Website-Code\public\fonts\MANROPE-LICENSE.txt'

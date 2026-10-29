@@ -1,0 +1,15 @@
+{
+  "title": "Helical Gears",
+  "order": 40,
+  "featured": true,
+  "fullRange": false,
+  "image": "/images/products/helical-gear.webp",
+  "alt": "Steel helical gear with angled teeth",
+  "supply": "manufactured",
+  "enquiry": "Helical / Bevel / Spur Gear",
+  "summary": "Helical gears for industrial drives, including double helical gears on request.",
+  "includes": [
+    "Helical gears",
+    "Double helical gears"
+  ]
+}

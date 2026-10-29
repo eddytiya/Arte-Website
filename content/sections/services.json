@@ -1,0 +1,25 @@
+{
+  "label": "Our Services",
+  "heading": "Beyond Manufacturing. Supporting Your Operations.",
+  "intro": "From component manufacturing to gearbox repair and sourcing support, we work with our customers to understand their requirements and provide practical solutions.",
+  "items": [
+    {
+      "title": "Gear Hobbing",
+      "body": "Gear hobbing for applicable gear manufacturing requirements. Share your drawings or component details for a feasibility discussion.",
+      "image": "/images/products/double-helical-gear.webp",
+      "enquiry": "Gear Hobbing"
+    },
+    {
+      "title": "Gearbox Repair",
+      "body": "Support for gearbox repair-related and replacement component requirements, subject to assessment and feasibility.",
+      "image": "/images/products/worm-reduction-gearbox-angle.webp",
+      "enquiry": "Gearbox Repair"
+    },
+    {
+      "title": "Industrial Sourcing",
+      "body": "Supply of selected additional industrial products through relevant supplier relationships, subject to availability and commercial feasibility.",
+      "image": "/images/products/internal-gear-assembly.webp",
+      "enquiry": "Industrial Product Sourcing"
+    }
+  ]
+}

@@ -1,12 +1,12 @@
 {
-  "title": "Worm Wheels",
-  "order": 20,
-  "featured": true,
-  "fullRange": true,
-  "image": "/images/products/worm-wheel.webp",
+  "title": "Worm Wheel and Worm Shafts",
+  "summary": "Worm wheels for new gearboxes and as replacement components for existing machinery. Share a sample, photograph or drawing privately for review.",
+  "image": "/images/uploads/worm-wheels-0b94890fc2ac63b3.jpg",
   "alt": "Bronze-rim worm wheel with machined hub",
   "supply": "manufactured",
   "enquiry": "Worm Wheel",
-  "summary": "Worm wheels for new gearboxes and as replacement components for existing machinery. Share a sample, photograph or drawing privately for review.",
-  "includes": []
+  "includes": [],
+  "featured": true,
+  "fullRange": true,
+  "order": 20
 }
